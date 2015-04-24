@@ -1,23 +1,21 @@
 package MyLinkedListTest;
 
-import com.sun.deploy.security.DeployURLClassPathCallback;
-import com.sun.org.apache.bcel.internal.generic.NEW;
+import java.util.List;
 
 /**
  * Created by root on 21.04.2015.
  */
-public class SimpleList<E> {
+public class SimpleList<E>  {
 
-    private static class Entry<E>
+    private static class Entry<E> // Класс для хранения элмента в списке
     {
         E element;
         Entry<E> next;
 
         Entry(E element)
         {
-            this.element = element;
-            this.next = null;
-
+            this.element = element; // Хранимый элемент
+            this.next = null; // Ссылка на следующий элемент
         }
     }
 
@@ -50,6 +48,23 @@ public class SimpleList<E> {
 
     }
 
+    public void addFirst(E Element) {
+        Entry<E> node = new Entry<E>(Element);
+        if(size == 0) {
+            tail = new Entry<E>(null) ;
+            tail.next = node;
+            head = tail;
+            size++;
+        }
+        else {
+            while (current != null){
+                current = current.next;
+            }
+
+        }
+
+    }
+
     @Override
     public String toString() {
         String str = "";
@@ -60,4 +75,10 @@ public class SimpleList<E> {
         }
         return str;
     }
+
+    E listFirst() { // Метод для возвращения первого элемента
+        return (E)head.element;
+    }
+
+
 }

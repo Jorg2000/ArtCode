@@ -35,7 +35,7 @@ public class myClass {
         test.add("7");
         test.add("8");
 
-        System.out.println(test);
+        System.out.println(test.listFirst());
 
     }
 }
