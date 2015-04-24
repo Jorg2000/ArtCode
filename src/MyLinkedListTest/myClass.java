@@ -34,8 +34,11 @@ public class myClass {
         test.add("6");
         test.add("7");
         test.add("8");
+        test.addFirst("0");
 
-        System.out.println(test.listFirst());
+        System.out.println(test);
+        System.out.println(test.getFirst());
+        System.out.println(test.getLast());
 
     }
 }

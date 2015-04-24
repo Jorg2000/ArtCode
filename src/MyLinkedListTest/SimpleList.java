@@ -56,12 +56,11 @@ public class SimpleList<E>  {
             head = tail;
             size++;
         }
-        else {
-            while (current != null){
-                current = current.next;
-            }
-
+        Entry<E> current = new Entry<E>(Element);
+        for(Entry<E> e = tail; e != null; e = e.next) {
+            current = e;
         }
+        current.next = node;
 
     }
 
@@ -76,8 +75,17 @@ public class SimpleList<E>  {
         return str;
     }
 
-    E listFirst() { // Метод для возвращения первого элемента
-        return (E)head.element;
+    E getFirst() { // Метод для возвращения первого элемента
+        E ret = (E)tail.element;
+        for(Entry<E> e = tail; e != null; e = e.next) {
+        ret = e.element;
+        }
+        return (E)ret;
+    }
+
+    E getLast() { // Метод для возвращения первого элемента
+        E ret = (E)tail.next.element;
+        return (E)ret;
     }
 
 
