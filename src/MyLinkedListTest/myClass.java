@@ -34,11 +34,20 @@ public class myClass {
         test.add("6");
         test.add("7");
         test.add("8");
-        test.addFirst("0");
+        test.addFirst("77");
 
         System.out.println(test);
         System.out.println(test.getFirst());
         System.out.println(test.getLast());
+
+        System.out.println(test.indexOf("8"));
+
+        test.clear();
+
+
+        System.out.println(test);
+
+        System.out.println(test.indexOf("8"));
 
     }
 }

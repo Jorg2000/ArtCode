@@ -15,7 +15,7 @@ public class SimpleList<E>  {
         Entry(E element)
         {
             this.element = element; // Хранимый элемент
-            this.next = null; // Ссылка на следующий элемент
+            this.next = null;       // Ссылка на следующий элемент
         }
     }
 
@@ -34,15 +34,13 @@ public class SimpleList<E>  {
 
         Entry<E> node = new Entry<E>(Element);
         if(size == 0) {
-            tail = new Entry<E>(null) ;
-            tail.next = node;
-            head = tail;
+            tail = node;
             size++;
         }
         else {
-            Entry<E> current = tail.next;
-            tail.next = node;
-            node.next = current;
+            Entry<E> oldTail = tail;
+            tail = node;
+            tail.next = oldTail;
             size++;
         }
 
@@ -51,28 +49,35 @@ public class SimpleList<E>  {
     public void addFirst(E Element) {
         Entry<E> node = new Entry<E>(Element);
         if(size == 0) {
-            tail = new Entry<E>(null) ;
-            tail.next = node;
-            head = tail;
+            tail = node;
             size++;
         }
-        Entry<E> current = new Entry<E>(Element);
-        for(Entry<E> e = tail; e != null; e = e.next) {
-            current = e;
+        else {
+            Entry<E> current = new Entry<E>(Element);
+            for (Entry<E> e = tail; e != null; e = e.next) {
+                current = e;
+            }
+            current.next = node;
         }
-        current.next = node;
 
     }
 
     @Override
     public String toString() {
         String str = "";
-        Entry<E> current = tail.next;
-        while (current != null){
-            str = str + " " + current.element;
-            current = current.next;
+        Entry<E> current = tail;
+        if (tail != null) {
+            while (current != null) {
+                if (current.next != null) {
+                    str = str + current.element + ", ";
+                }
+                else {
+                    str = str + current.element;
+                }
+                current = current.next;
+            }
         }
-        return str;
+        return "[" + str + "]";
     }
 
     E getFirst() { // Метод для возвращения первого элемента
@@ -80,13 +85,45 @@ public class SimpleList<E>  {
         for(Entry<E> e = tail; e != null; e = e.next) {
         ret = e.element;
         }
-        return (E)ret;
+        return ret;
     }
 
-    E getLast() { // Метод для возвращения первого элемента
-        E ret = (E)tail.next.element;
-        return (E)ret;
+    E getLast() { // Метод для возвращения последнего элемента
+        E ret = (E)tail.element;
+        return ret;
     }
+
+    public void clear() {
+        for(Entry<E> e = tail; e != null; ) {
+            Entry<E> next = e.next;
+            e.next = null;
+            e.element = null;
+            e = next;
+        }
+        tail = null;
+        size = 0;
+
+    }
+
+    public int indexOf(Object o) {
+        int index = 0;
+        if (o == null) {
+            for (Entry<E> e = tail; e != null; e = e.next) {
+                if (e.next == null)
+                    return (size) - index;
+                index++;
+            }
+        } else {
+            for (Entry<E> e = tail; e != null; e = e.next) {
+                if (o.equals(e.element))
+                    return (size) - index;
+                index++;
+            }
+        }
+        return -1;
+    }
+
+
 
 
 }
