@@ -65,7 +65,7 @@ public class SimpleDoubleLinkedList <E> {
         else {
 
             // Search for the elements with desirable index
-            // I am always make search from the last element
+            // I  always make search from the last element
             Entry<E> current = last;
             int count = 0;
             while (current != null && count != index)
@@ -78,9 +78,9 @@ public class SimpleDoubleLinkedList <E> {
             1) I want to put new element strictly on the certain index in the old list,
             so I move old element to the "left" and put new node on his place
             2) I don't want to move next (right) element so I assign his reference to new nod
-            3) The most interesting part. To insert new node to the list I am use reference of the
-               "previous" reference of the node next to current.
-            4) I am reference of my new node to the current;
+            3) The most interesting part. To insert new node to the list I assign
+               "previous" reference from node next to current to my new node.
+            4) I make  reference of my new node to the current;
             To create this algoritm I used Java data structures and algorithm by Robert Lafore p 220 in russian edition
              of 2013 year
             */
