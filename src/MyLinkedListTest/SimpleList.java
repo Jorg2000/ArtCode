@@ -56,7 +56,6 @@ public class SimpleList<E>  {
                 }
                // Use for any other situation
                 else {
-                    //Entry<E> old = current.next;
                     node.next = current.next;
                     current.next = node;
                 }
@@ -72,7 +71,7 @@ public class SimpleList<E>  {
             size++;
         }
         else {
-            Entry<E> current = tail;// new Entry<E>(Element);
+            Entry<E> current = tail;
             for (Entry<E> e = tail; e != null; e = e.next) {
                 current = e;
             }
@@ -81,7 +80,6 @@ public class SimpleList<E>  {
         }
 
     }
-
 
     E getFirst() {
         E ret = tail.element;
